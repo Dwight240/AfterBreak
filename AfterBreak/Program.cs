@@ -10,6 +10,29 @@ namespace AfterBreak
     {
         static void Main(string[] args)
         {
+            int number = 24;
+            int j = number;
+            List<int> array = new List<int>();
+
+                bool i = true;
+                while (i)
+                {
+                    for (int k = 2; k <= number; k++)
+                    {
+                        if (number % k == 0)
+                        {
+                            Console.WriteLine($"Liczba podzielna przez {k}");
+                            number = number / k;
+                            k = 1;
+                            array.Add(k);
+                            
+                        }
+
+                    }
+                    i = false;
+                }
+
+            Console.ReadKey();
         }
     }
 }
