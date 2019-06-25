@@ -12,33 +12,14 @@ namespace AfterBreak
     {
         static void Main(string[] args)
         {
-            var fromAddress = new MailAddress("wieja.d@gmail.com","From Denis");
-            var toAddress = new MailAddress("wiemar93@gmail.com", "To Denver");
-            const string fromPassword = "Rcrusoe023s";
-            const string subject = "Robota";
-            const string body = "Body";
+            List<int> lista = new List<int> { 5, 2, 8, 9, 3, 1, 0, 3, 5, 4, 8, 6, 9, 3 };
+            var x = 2;
+            lista.Remove(0);
 
-            var smtp = new SmtpClient
+            foreach (var item in lista)
             {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromAddress.Address,fromPassword),
-                Timeout = 2000
-            };
-
-            var message = new MailMessage(fromAddress, toAddress)
-            {
-                Subject = subject,
-                Body = body
-            };
-            
-                smtp.Send(message);
-            int x = 2;
-            x.
-
+                Console.WriteLine(item);
+            }
         }
     }
 }
