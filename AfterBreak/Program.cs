@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,29 +12,33 @@ namespace AfterBreak
     {
         static void Main(string[] args)
         {
-            int number = 24;
-            int j = number;
-            List<int> array = new List<int>();
+            var fromAddress = new MailAddress("wieja.d@gmail.com","From Denis");
+            var toAddress = new MailAddress("wiemar93@gmail.com", "To Denver");
+            const string fromPassword = "Rcrusoe023s";
+            const string subject = "Robota";
+            const string body = "Body";
 
-                bool i = true;
-                while (i)
-                {
-                    for (int k = 2; k <= number; k++)
-                    {
-                        if (number % k == 0)
-                        {
-                            Console.WriteLine($"Liczba podzielna przez {k}");
-                            number = number / k;
-                            k = 1;
-                            array.Add(k);
-                            
-                        }
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address,fromPassword),
+                Timeout = 2000
+            };
 
-                    }
-                    i = false;
-                }
+            var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            };
+            
+                smtp.Send(message);
+            int x = 2;
+            x.
 
-            Console.ReadKey();
         }
     }
 }
